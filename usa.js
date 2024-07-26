@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetchGlobalStats();
+    fetchUSAStats();
     //fetchAndRenderBarChart();
 
     // Choose which function to call based on your requirement
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-function fetchGlobalStats() {
+function fetchUSAStats() {
     axios.get('https://api.covidtracking.com/v2/us/daily.json')
         .then(response => {
             const latestData = response.data.data[0];
