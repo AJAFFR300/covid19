@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Tutorials - COVID-19 Resources</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1, h2, h3 {
+            margin-top: 20px;
+        }
+
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">COVID-19 Resources</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="USA.html">USA Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="england.html">England Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="tutorial.html">Tutorials</a></li>
+                <li class="nav-item"><a class="nav-link" href="technologies.html">Technologies</a></li>
+                <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1>API Tutorials</h1>
+            <p class="lead">Learn how to use our COVID-19 APIs.</p>
+        </div>
+    </header>
+
+    <section class="container my-5">
+        <h2>APIs for COVID-19 Statistics</h2>
+        <p>All our COVID-19 APIs are open-source and free to use without any limitations. If you find them useful, we would appreciate it if you link to <a href="https://apify.com/covid-19" target="_blank">https://apify.com/covid-19</a>.</p>
+        <p>Some of these coronavirus APIs are no longer actively maintained, as infections have dropped in those countries thanks to vaccination.</p>
+
+        <h3>1. Apify COVID-19 API</h3>
+        <p>The Apify COVID-19 API provides up-to-date information on the COVID-19 pandemic. You can get the latest data for different countries, including confirmed cases, recoveries, deaths, and more.</p>
+        <h4>Endpoint:</h4>
+        <pre>GET https://api.apify.com/v2/key-value-stores/{storeId}/records/{key}</pre>
+        <h4>Example:</h4>
+        <pre>GET https://api.apify.com/v2/key-value-stores/toDWvRj1JpTXiM8FF/records/LATEST</pre>
+        <h4>Response:</h4>
+        <pre>
+{
+    "totalInfected": 5683,
+    "dailyConfirmed": 665,
+    "recovered": 93,
+    "deceased": 281,
+    "england": 4792,
+    "scottland": 416,
+    "wales": 347,
+    "ireland": 128,
+    "sourceUrl": "https://www.gov.uk/government/publications/covid-19-track-coronavirus-cases",
+    "lastUpdatedAtApify": "2020-03-22T18:24:00.000Z"
+}
+        </pre>
+        <p>You can find more information and other endpoints in the <a href="https://apify.com/covid-19" target="_blank">Apify COVID-19 documentation</a>.</p>
+
+        <h3>2. COVID Tracking Project API</h3>
+        <p>The COVID Tracking Project API offers detailed information on the COVID-19 situation in the United States. It includes data on testing, cases, hospitalizations, and outcomes.</p>
+        <h4>Endpoint:</h4>
+        <pre>GET https://api.covidtracking.com/v1/states/current.json</pre>
+        <h4>Example:</h4>
+        <pre>GET https://api.covidtracking.com/v1/states/ca/current.json</pre>
+        <h4>Response:</h4>
+        <pre>
+{
+    "state": "CA",
+    "positive": 3762005,
+    "negative": 54089000,
+    "pending": 12345,
+    "hospitalizedCurrently": 7200,
+    "hospitalizedCumulative": 150000,
+    "inIcuCurrently": 1200,
+    "inIcuCumulative": 20000,
+    "onVentilatorCurrently": 400,
+    "onVentilatorCumulative": 5000,
+    "recovered": 3500000,
+    "death": 65000,
+    "totalTestResults": 57851000,
+    "lastUpdateEt": "2021-03-07T00:00:00Z",
+    "dateModified": "2021-03-07T00:00:00Z",
+    "checkTimeEt": "2021-03-07T00:00:00Z",
+    "lastChecked": "2021-03-07T00:00:00Z"
+}
+        </pre>
+        <p>You can find more information and other endpoints in the <a href="https://covidtracking.com/data/api" target="_blank">COVID Tracking Project documentation</a>.</p>
+    </section>
+
+    <footer class="bg-light text-center py-3">
+        <div class="container">
+            <p>&copy; 2024 COVID-19 Resources. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

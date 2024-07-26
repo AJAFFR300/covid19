@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // fetchAndRenderHistoricalData();
 // Or, use this line to fetch from local file
     fetchAndRenderLocalData();
+
+   
+
     
 });
 
@@ -84,10 +87,8 @@ function fetchAndRenderLocalData() {
             const validData = data.filter(d => d.date !== null);
 
             renderLineChart(validData);
+            renderLineChartInfectedCases(validData);
            
-            // Aggregate data by month and render the chart
-            const monthlyData = aggregateDataByMonth(data);
-            renderTotalInfectedBarChart(monthlyData);
         })
         .catch(error => console.error('Error fetching local data:', error));
 }
@@ -158,81 +159,78 @@ function renderLineChart(data) {
 }
 
 
-// function aggregateDataByMonth(data) {
-//     const parseMonth = d3.timeMonth.floor;
-//     const monthlyData = d3.rollups(
-//         data,
-//         v => d3.sum(v, d => d.totalInfected),
-//         d => parseMonth(d.date)
-//     ).map(([date, totalInfected]) => ({ date, totalInfected }));
+function renderLineChartInfectedCases(data) {
+    const margin = { top: 20, right: 30, bottom: 80, left: 70 };
 
-//     return monthlyData;
-// }
+    function updateChart() {
+        // Clear previous SVG content
+        d3.select("#line-chart2").selectAll("*").remove();
 
-// function renderTotalInfectedBarChart(data) {
-//     const margin = { top: 20, right: 30, bottom: 80, left: 60 };
+        const containerWidth = document.getElementById('line-chart2').clientWidth;
+        const width = containerWidth - margin.left - margin.right;
+        const height = 500 - margin.top - margin.bottom;
 
-//     function updateChart() {
-//         // Clear previous SVG content
-//         d3.select("#total-infected-bar-chart").selectAll("*").remove();
+        const svg = d3.select("#line-chart2").append("svg")
+            .attr("width", containerWidth)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-//         const containerWidth = document.getElementById('total-infected-bar-chart').clientWidth;
-//         const width = containerWidth - margin.left - margin.right;
-//         const height = 500 - margin.top - margin.bottom;
+        const x = d3.scaleTime().range([0, width]);
+        const y = d3.scaleLinear().range([height, 0]);
 
-//         const svg = d3.select("#total-infected-bar-chart").append("svg")
-//             .attr("width", containerWidth)
-//             .attr("height", height + margin.top + margin.bottom)
-//             .append("g")
-//             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        const xAxis = d3.axisBottom(x)
+            .ticks(d3.timeMonth.every(1))
+            .tickFormat(d3.timeFormat("%B %Y"));
 
-//         const x = d3.scaleBand().range([0, width]).padding(0.1);
-//         const y = d3.scaleLinear().range([height, 0]);
+        const yAxis = d3.axisLeft(y);
 
-//         // Set domains
-//         x.domain(data.map(d => d.date));
-//         y.domain([0, d3.max(data, d => d.totalInfected)]);
+        const line = d3.line()
+            .x(d => x(d.date))
+            .y(d => y(d.totalInfected !== undefined ? d.totalInfected : (d.infected !== undefined ? d.infected : 0))); // Handle both fields
 
-//         const xAxis = d3.axisBottom(x).tickFormat(d3.timeFormat("%b %Y"));
-//         const yAxis = d3.axisLeft(y);
+        // Check if data is defined and is an array
+        if (Array.isArray(data)) {
+            // Clean and filter data
+            const cleanedData = data.filter(d => d.date && (d.totalInfected !== null && d.totalInfected !== undefined) || (d.infected !== null && d.infected !== undefined));
 
-//         const isMobile = window.innerWidth <= 768;
+            // Set domains
+            x.domain(d3.extent(cleanedData, d => d.date));
+            y.domain([0, d3.max(cleanedData, d => Math.max(d.totalInfected || 0, d.infected || 0))]);
 
-//         svg.append("g")
-//             .attr("class", "x axis")
-//             .attr("transform", "translate(0," + height + ")")
-//             .call(xAxis)
-//             .selectAll("text")
-//             .attr("transform", isMobile ? "rotate(-90)" : "rotate(-45)")
-//             .style("text-anchor", isMobile ? "middle" : "end")
-//             .attr("dy", isMobile ? "-0.5em" : "1.5em")
-//             .attr("dx", isMobile ? "-3.5em" : "0.0em")
-//             .attr("x", isMobile ? -10 : 0)
-//             .attr("y", isMobile ? 10 : 0);
+            const isMobile = window.innerWidth <= 768;
 
-//         svg.append("g")
-//             .attr("class", "y axis")
-//             .call(yAxis);
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis)
+                .selectAll("text")
+                .attr("transform", isMobile ? "rotate(-90)" : "rotate(-45)")
+                .style("text-anchor", isMobile ? "middle" : "end")
+                .attr("dy", isMobile ? "-0.5em" : "1.5em")
+                .attr("dx", isMobile ? "-3.5em" : "0.0em")
+                .attr("x", isMobile ? -10 : 0)
+                .attr("y", isMobile ? 10 : 0);
 
-//         svg.selectAll(".bar")
-//             .data(data)
-//             .enter().append("rect")
-//             .attr("class", "bar")
-//             .attr("x", d => x(d.date))
-//             .attr("width", x.bandwidth())
-//             .attr("y", d => y(d.totalInfected))
-//             .attr("height", d => height - y(d.totalInfected))
-//             .attr("fill", "steelblue");
-//     }
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis);
 
-//     // Initial chart rendering
-//     updateChart();
+            svg.append("path")
+                .datum(cleanedData) // Use cleaned data
+                .attr("class", "line")
+                .attr("d", line);
+        } else {
+            console.error("Data is not an array or is undefined");
+        }
+    }
 
-//     // Handle window resize
-//     window.addEventListener("resize", updateChart);
-// }
+    // Initial chart rendering
+    updateChart();
 
-
+    // Handle window resize
+    window.addEventListener("resize", updateChart);
+}
 
 
 
