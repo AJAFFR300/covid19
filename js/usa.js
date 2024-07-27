@@ -129,7 +129,7 @@ function fetchDataFromAPI() {
 
 // Function to fetch data from local JSON file
 function fetchDataFromLocalJson() {
-    return fetch('data/usa_data.json')
+    return fetch('./data/usa_data.json')
         .then(response => response.json())
         .then(data => {
             // Extract the 'data' field and call the render function
