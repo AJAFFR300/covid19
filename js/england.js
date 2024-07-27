@@ -69,7 +69,7 @@ function fetchAndRenderHistoricalData() {
 }
 
 function fetchAndRenderLocalData() {
-    fetch('../data/uk_data.json')
+    fetch('./data/uk_data.json')
         .then(response => response.json())
         .then(data => {
             const parseDate = d3.timeParse("%Y-%m-%d");
@@ -247,7 +247,7 @@ function drawBarChart() {
         .attr('transform', `translate(${margin.left},${margin.top})`);
 
     // Load the JSON data
-    d3.json('../data/deaths.json').then(data => {
+    d3.json('./data/deaths.json').then(data => {
         // Process the data
         const parsedData = data.map(d => ({
             date: new Date(d.date),
@@ -399,7 +399,7 @@ function renderLineChart2024(data) {
 
 // Load the data and create the chart
 function loadChart() {
-    d3.json("../data/admitted_patients.json").then(data => {
+    d3.json("./data/admitted_patients.json").then(data => {
         renderLineChart2024(data);
     }).catch(error => {
         console.error('Error loading the JSON file:', error);
