@@ -3,30 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Author - COVID-19 Resources</title>
+    <title>USA Overview - COVID-19 Resources</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="/css/style.css">
-
-    <style>
-        .author-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
-
-        .author-bio {
-            font-size: 16px;
-        }
-
-        .social-links a {
-            margin: 0 10px;
-            font-size: 24px;
-            color: #555;
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -40,34 +19,38 @@
                 <li class="nav-item"><a class="nav-link active" href="usa.html">USA Overview</a></li>
                 <li class="nav-item"><a class="nav-link" href="tutorial.html">Tutorials</a></li>
                 <li class="nav-item"><a class="nav-link" href="technologies.html">Technologies</a></li>
-                <li class="nav-item"><a class="nav-link active" href="author.html">Author</a></li>
+                <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
             </ul>
         </div>
     </nav>
 
     <header class="bg-primary text-white text-center py-5">
         <div class="container">
-            <h1>Author</h1>
-            <p class="lead">Meet the mind behind COVID-19 Resources</p>
+            <h1>USA Overview</h1>
+            <p class="lead">Up-to-date USA statistics and visualizations of COVID-19.</p>
         </div>
     </header>
 
     <section class="container my-5">
         <div class="row">
-            <div class="col-12 text-center">
-                <img src="https://via.placeholder.com/150" alt="Author Photo" class="author-photo">
-                <h2>Ali Jaffri</h2>
-                <p class="author-bio">Ali Jaffri is a software engineer with over 1 year of experience in web development. 
-                    He has a passion for creating interactive data visualizations and has been actively involved in several open-source projects.
-                     Ali is a student at Glasgow Caledonian University.</p>
-            </p>
-                <div class="social-links">
-                    <a href="https://twitter.com/Ali" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://github.com/Ali" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/Ali" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <div class="col-12">
+                <h2>USA COVID-19 Statistics</h2>
+                <div id="global-stats" class="my-4">
+                    <!-- Global statistics will be dynamically inserted here -->
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h2>Cases per State USA</h2>
+                <div id="bar-chart" class="bar-chart"></div>
+                   
+                </div>
+            </div>
+        </div>
+
+
     </section>
 
     <footer class="bg-light text-center py-3">
@@ -78,6 +61,11 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/usa.js"></script>
+
+
+
 </body>
 </html>

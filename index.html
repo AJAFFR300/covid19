@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID-19 Resources</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -15,9 +15,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="USA.html">USA Overview</a></li>
                 <li class="nav-item"><a class="nav-link" href="england.html">England Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="usa.html">USA Overview</a></li>
                 <li class="nav-item"><a class="nav-link" href="tutorial.html">Tutorials</a></li>
+                <li class="nav-item"><a class="nav-link" href="technologies.html">Technologies</a></li>
                 <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
             </ul>
         </div>
@@ -30,37 +31,80 @@
         </div>
     </header>
 
-    <section class="container my-5">
+    <main class="container my-5">
         <div class="row">
+
             <div class="col-md-4">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">USA Overview</h5>
+                        <h5 class="card-title">England Covid-19 Statistics</h5>
+                        <p class="card-text">Get detailed COVID-19 data for England, Ireland, and Wales.</p>
+                        <a href="england.html" class="btn btn-primary" aria-label="View England Overview">View England Overview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">USA Covid-19</h5>
                         <p class="card-text">Explore USA COVID-19 statistics and visualizations.</p>
-                        <a href="USA.html" class="btn btn-primary">View USA Data</a>
+                        <a href="usa.html" class="btn btn-primary" aria-label="View USA Overview">View USA Overview</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">England Data</h5>
-                        <p class="card-text">Get detailed COVID-19 data for England, Ireland and wales</p>
-                        <a href="england.html" class="btn btn-primary">View England Overview</a>
-                    </div>
-                </div>
-            </div>
+          
             <div class="col-md-4">
                 <div class="card mb-4">
                     <div class="card-body">
                         <h5 class="card-title">API Tutorials</h5>
                         <p class="card-text">Analyze historical trends in COVID-19 cases and vaccinations.</p>
-                        <a href="tutorial.html" class="btn btn-primary">View API Tutorials</a>
+                        <a href="tutorial.html" class="btn btn-primary" aria-label="View API Tutorials">View API Tutorials</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- New Section: Latest Updates -->
+        <section class="my-5">
+            <h2>Latest Updates</h2>
+            <div id="latest-updates" class="card">
+                <div class="card-body">
+                    <p class="card-text">Stay informed with the latest updates on COVID-19 metrics and trends. Check back here for recent news and changes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: FAQs -->
+        <section class="my-5">
+            <h2>Frequently Asked Questions</h2>
+            <div id="faqs">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">What data is available?</h5>
+                        <p class="card-text">We provide up-to-date COVID-19 statistics, including confirmed cases, recoveries, deaths, and vaccination data.</p>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title">How often is the data updated?</h5>
+                        <p class="card-text">COVID-19 metrics are updated weekly on Thursdays at 4pm. Healthcare data is updated on the second Thursday of every month at 4pm.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Resources -->
+        <section class="my-5">
+            <h2>Additional Resources</h2>
+            <ul class="list-unstyled">
+                <li><a href="https://www.gov.uk/government/publications/covid-19-track-coronavirus-cases" target="_blank" class="btn btn-link">UK Government COVID-19 Data</a></li>
+                <li><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank" class="btn btn-link">World Health Organization</a></li>
+                <li><a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html" target="_blank" class="btn btn-link">CDC COVID-19 Information</a></li>
+            </ul>
+        </section>
+
+    </main>
 
     <footer class="bg-light text-center py-3">
         <div class="container">
@@ -68,8 +112,8 @@
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
 </body>
 </html>

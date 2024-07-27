@@ -5,33 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>England Overview - COVID-19 Resources</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
 
     <style>
      
+     .bar {
+            stroke: black;
+            stroke-width: 1px;
+        }
         .x-axis text {
             font-size: 12px;
         }
-
-
         .line {
             stroke: steelblue;
             stroke-width: 1.5;
             fill: none;
         }
-
-
         #line-chart {
             width: 90%;
             overflow: visible; /* Ensure labels and lines are visible within the container */
             position: relative; /* For proper positioning */
         }
-
         #line-chart svg {
             width: 100%;
             height: auto; /* Maintain aspect ratio */
         }
-
+        svg {
+            display: block;
+            margin: auto;
+        }
 
     </style>
 </head>
@@ -43,8 +46,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="USA.html">USA Overview</a></li>
-                <li class="nav-item"><a class="nav-link" href="england.html">England Overview</a></li>
+                <li class="nav-item"><a class="nav-link active" href="england.html">England Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="usa.html">USA Overview</a></li>
                 <li class="nav-item"><a class="nav-link" href="tutorial.html">Tutorials</a></li>
                 <li class="nav-item"><a class="nav-link" href="technologies.html">Technologies</a></li>
                 <li class="nav-item"><a class="nav-link" href="author.html">Author</a></li>
@@ -71,17 +74,36 @@
 
         <div class="row">
             <div class="col-12">
-                <h2>Daily Confirmed Cases</h2>
+                <h2>Daily Confirmed Cases (2020-2022)</h2>
+                <p>Total Confirmed cases from April 2020 to February 2022.</p>
                 <div id="line-chart" class="line-chart"></div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12">
-                <h2>Total infected cases</h2>
+                <h2>Total infected cases (2020-2022)</h2>
+                <p>Total infected people from April 2020 to February 2022.</p>
                 <div id="line-chart2" class="line-chart"></div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h2>Deaths (2024)</h2>
+                <p>Death registrations with COVID-19 mentioned on the death certificate by week. Data can be filtered by selecting Government Office Region.</p>
+                <div id="bar-chart"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h2>Patients admitted to hospital (2024)</h2>
+                <p>Daily number of COVID-19 patients admitted to hospital.</p>
+                <div id="admitted-chart" class="admitted-chart"></div>
+            </div>
+        </div>
+        
 
      
     </section>
@@ -96,7 +118,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="england.js"></script>
+    <script src="js/england.js"></script>
 
 
    
